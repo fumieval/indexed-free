@@ -17,6 +17,6 @@ source-repository head
   location: https://github.com/fumieval/indexed-free.git
 
 library
-  exposed-modules:     Control.Monad.Indexed.Free
+  exposed-modules:     Control.Monad.Indexed.Free, Control.Monad.Indexed.Free.Class
 
   build-depends:       base ==4.*, indexed < 0.2
