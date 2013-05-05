@@ -50,6 +50,6 @@ instance IxFunctor f => Monad (IxFree f i i) where
     return = ireturn
     (>>=) = (>>>=)
 
-hoistIxFree :: (IxFunctor f, IxMonadFree g m) => (forall i j x. f i j x -> g i j x) -> IxFree f i j a -> m i j a
+hoistIxFree :: (IxFunctor g, IxMonadFree g m) => (forall i j x. f i j x -> g i j x) -> IxFree f i j a -> m i j a
 hoistIxFree _ (Pure a) = ireturn a
-hoistIxFree f (Free fm) = iwrap $ f (imap (hoistIxFree f) fm)
+hoistIxFree f (Free fm) = iwrap $ imap (hoistIxFree f) $ f fm

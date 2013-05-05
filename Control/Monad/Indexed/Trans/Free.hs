@@ -1,5 +1,5 @@
 {-# LANGUAGE GADTs, MultiParamTypeClasses, FlexibleInstances, Rank2Types #-}
-module Control.Monad.Indexed.Trans.Free (IxFreeF(..), module Control.Monad.Indexed.Free.Class) where
+module Control.Monad.Indexed.Trans.Free (IxFreeF(..), IxFreeT(..), transIxFreeT, module Control.Monad.Indexed.Free.Class) where
 
 import Control.Applicative
 import Control.Monad.Indexed
@@ -43,3 +43,8 @@ instance (Monad m, IxFunctor f) => Applicative (IxFreeT f m i i) where
 instance (Monad m, IxFunctor f) => Monad (IxFreeT f m i i) where
     return = ireturn
     (>>=) = (>>>=)
+
+transIxFreeT :: (IxFunctor g, Monad m) => (forall i j x. f i j x -> g i j x) -> IxFreeT f m i j a -> IxFreeT g m i j a
+transIxFreeT f (IxFreeT m) = IxFreeT $ m >>= \r -> return $ case r of
+    Pure a -> Pure a
+    Free fm -> Free $ imap (transIxFreeT f) (f fm) 
