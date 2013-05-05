@@ -1,5 +1,5 @@
 name:                indexed-free
-version:             0.1
+version:             0.2
 synopsis:            indexed monads for free
 description:         A free indexed monad
 homepage:            https://github.com/fumieval/indexed-free
@@ -17,6 +17,6 @@ source-repository head
   location: https://github.com/fumieval/indexed-free.git
 
 library
-  exposed-modules:     Control.Monad.Indexed.Free, Control.Monad.Indexed.Free.Class
+  exposed-modules:     Control.Monad.Indexed.Free, Control.Monad.Indexed.Free.Class, Control.Monad.Indexed.Trans.Free
 
   build-depends:       base ==4.*, indexed < 0.2
