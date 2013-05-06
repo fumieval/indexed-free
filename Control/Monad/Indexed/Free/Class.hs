@@ -1,5 +1,5 @@
 {-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
-module Control.Monad.Indexed.Free.Class (IxMonadFree(..)) where
+module Control.Monad.Indexed.Free.Class (IxMonadFree(..), iliftFree) where
 import Control.Monad.Indexed
 
 class IxMonad m => IxMonadFree f m | m -> f where

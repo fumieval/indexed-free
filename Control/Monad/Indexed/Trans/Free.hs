@@ -47,4 +47,9 @@ instance (Monad m, IxFunctor f) => Monad (IxFreeT f m i i) where
 transIxFreeT :: (IxFunctor g, Monad m) => (forall i j x. f i j x -> g i j x) -> IxFreeT f m i j a -> IxFreeT g m i j a
 transIxFreeT f (IxFreeT m) = IxFreeT $ m >>= \r -> return $ case r of
     Pure a -> Pure a
-    Free fm -> Free $ imap (transIxFreeT f) (f fm) 
+    Free fm -> Free $ imap (transIxFreeT f) (f fm)
+
+hoistIxFreeT :: (IxFunctor f, Monad m) => (forall x. m x -> n x) -> IxFreeT f m i j a -> IxFreeT f n i j a
+hoistIxFreeT t (IxFreeT m) = IxFreeT $ t $ m >>= \r -> return $ case r of
+    Pure a -> Pure a
+    Free fm -> Free $ imap (hoistIxFreeT t) fm
