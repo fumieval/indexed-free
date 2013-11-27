@@ -1,5 +1,5 @@
 name:                indexed-free
-version:             0.3.0
+version:             0.3.1
 synopsis:            indexed monads for free
 description:         A free indexed monad
 homepage:            https://github.com/fumieval/indexed-free

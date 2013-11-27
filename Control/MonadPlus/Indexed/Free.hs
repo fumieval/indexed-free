@@ -1,4 +1,4 @@
-{-# LANGUAGE GADTs, FlexibleInstances #-}
+{-# LANGUAGE GADTs, FlexibleInstances, MultiParamTypeClasses #-}
 module Control.MonadPlus.Indexed.Free (IxFree(..), module Control.Monad.Indexed.Free.Class) where
 
 import Control.Applicative
@@ -36,6 +36,9 @@ instance IxFunctor f => IxMonadPlus (IxFree f) where
   l `implus` Plus [] = l
   Plus as `implus` Plus bs = Plus (as ++ bs)
   a `implus` b = Plus [a, b]
+
+instance IxFunctor f => IxMonadFree f (IxFree f) where
+    iwrap = Free
 
 instance IxFunctor f => Functor (IxFree f i i) where
     fmap = imap
