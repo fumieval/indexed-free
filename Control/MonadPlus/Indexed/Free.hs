@@ -1,4 +1,4 @@
-{-# LANGUAGE GADTs, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE GADTs, FlexibleInstances, MultiParamTypeClasses, PolyKinds, UndecidableInstances  #-}
 module Control.MonadPlus.Indexed.Free (IxFree(..), module Control.Monad.Indexed.Free.Class) where
 
 import Control.Applicative

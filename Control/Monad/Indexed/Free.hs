@@ -1,4 +1,4 @@
-{-# LANGUAGE GADTs, MultiParamTypeClasses, FlexibleInstances, Rank2Types #-}
+{-# LANGUAGE GADTs, MultiParamTypeClasses, FlexibleInstances, Rank2Types, PolyKinds, UndecidableInstances #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Control.Monad.Indexed.Free

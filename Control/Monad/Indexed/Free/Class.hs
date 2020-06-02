@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, PolyKinds #-}
 module Control.Monad.Indexed.Free.Class (IxMonadFree(..), iliftFree) where
 import Control.Monad.Indexed
 
